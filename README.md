@@ -41,21 +41,14 @@ npm start
 
 Navega a `http://localhost:4200/`. La aplicación se recargará automáticamente si cambias algún archivo fuente.
 
-## Despliegue (GitHub Pages)
+## Despliegue (Vercel)
 
-Este proyecto incluye un script configurado para desplegar en GitHub Pages.
+La forma más sencilla de desplegar esta aplicación Angular es usando [Vercel](https://vercel.com). The project requires zero configuration.
 
-1.  Asegúrate de que tu repositorio en GitHub está creado.
-2.  Si el nombre de tu repositorio **no** es `ecommerce-shop`, edita el archivo `package.json` y actualiza el script `build:gh-pages`:
-    ```json
-    "build:gh-pages": "ng build --base-href /NOMBRE-DE-TU-REPO/ --output-path docs"
-    ```
-3.  Ejecuta el comando de build:
-    ```bash
-    npm run build:gh-pages
-    ```
-4.  Sube los cambios a GitHub (asegúrate de incluir la carpeta `docs`).
-5.  En la configuración de tu repositorio en GitHub, ve a la sección **Pages** y selecciona la rama `main` y la carpeta `/docs` como fuente.
+1.  Push your code to a git repository (GitHub, GitLab, Bitbucket).
+2.  Import the project into Vercel.
+3.  Vercel will automatically detect that it's an Angular project and configure the build settings.
+4.  Click **Deploy**.
 
 ## Estructura del Proyecto
 

@@ -1,0 +1,80 @@
+@if (product) {
+  <div class="container section">
+    <div class="product-detail-layout">
+      <!-- Image Gallery (Simplified) -->
+      <div class="product-gallery">
+        <div class="main-image-container">
+            <img [src]="product.image" [alt]="product.name" class="main-image">
+        </div>
+      </div>
+
+      <!-- Product Info -->
+      <div class="product-details">
+        <div class="detail-header">
+          <span class="product-category">{{ product.category }}</span>
+          <h1 class="product-title">{{ product.name }}</h1>
+          <p class="product-price">{{ product.price | currency:'EUR':'symbol' }}</p>
+        </div>
+
+        <div class="detail-description">
+          <p>Esta prenda premium está confeccionada con los mejores materiales para garantizar durabilidad y confort. Un diseño atemporal que encaja perfectamente en tu armario cápsula.</p>
+        </div>
+
+        <div class="product-options">
+            <h3 class="option-label">Talla</h3>
+            <div class="size-selector">
+                @for (size of sizes; track size) {
+                    <button 
+                        class="size-btn" 
+                        [class.active]="activeSize === size"
+                        (click)="selectSize(size)">
+                        {{ size }}
+                    </button>
+                }
+            </div>
+            @if (!activeSize) {
+                <p class="size-hint">Selecciona una talla</p>
+            }
+        </div>
+
+        <div class="product-actions">
+          <button class="btn btn-primary add-cart-btn" (click)="addToCart()" [disabled]="!activeSize">
+            Añadir a la cesta
+          </button>
+        </div>
+
+        <div class="product-meta">
+            <p>Envío gratuito en pedidos superiores a 50€</p>
+            <p>Devoluciones gratuitas en 30 días</p>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Related Products -->
+    @if (relatedProducts.length > 0) {
+        <div class="related-section">
+            <h2 class="section-title">También te podría gustar</h2>
+            <div class="product-grid">
+                @for (related of relatedProducts; track related.id) {
+                    <div class="product-card">
+                        <div class="product-image-container">
+                            <img [src]="related.image" [alt]="related.name" class="product-image">
+                        </div>
+                        <div class="product-info">
+                            <h3 class="product-name">
+                                <a [routerLink]="['/products', related.id]">{{ related.name }}</a>
+                            </h3>
+                            <p class="product-price">{{ related.price | currency:'EUR':'symbol' }}</p>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+    }
+  </div>
+} @else {
+  <div class="container section">
+    <p>Producto no encontrado.</p>
+    <a routerLink="/shop">Volver a la tienda</a>
+  </div>
+}

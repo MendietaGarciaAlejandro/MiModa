@@ -1,0 +1,143 @@
+.product-detail-layout {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 3rem;
+  margin-bottom: 5rem;
+}
+
+/* Gallery */
+.main-image-container {
+  aspect-ratio: 3/4;
+  background-color: #f0f0f0;
+  border-radius: var(--radius-md);
+  overflow: hidden;
+}
+
+.main-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Info */
+.product-details {
+  display: flex;
+  flex-direction: column;
+}
+
+.product-category {
+  font-size: var(--text-sm);
+  color: hsl(var(--text-secondary));
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 0.5rem;
+  display: block;
+}
+
+.product-title {
+  font-size: var(--text-3xl);
+  line-height: 1.1;
+  margin-bottom: 1rem;
+}
+
+.product-price {
+  font-size: var(--text-xl);
+  font-weight: 500;
+  margin-bottom: 2rem;
+}
+
+.detail-description {
+  margin-bottom: 2.5rem;
+  color: hsl(var(--text-secondary));
+}
+
+/* Options */
+.product-options {
+    margin-bottom: 2rem;
+}
+
+.option-label {
+    font-size: var(--text-sm);
+    font-weight: 600;
+    margin-bottom: 0.75rem;
+}
+
+.size-selector {
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+}
+
+.size-btn {
+    width: 3rem;
+    height: 3rem;
+    border: 1px solid var(--border-light);
+    background: none;
+    border-radius: var(--radius-sm);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s;
+}
+
+.size-btn:hover {
+    border-color: hsl(var(--text-main));
+}
+
+.size-btn.active {
+    background-color: hsl(var(--text-main));
+    color: white;
+    border-color: hsl(var(--text-main));
+}
+
+.size-hint {
+    margin-top: 0.5rem;
+    font-size: var(--text-xs);
+    color: #e74c3c;
+}
+
+/* Actions */
+.product-actions {
+    margin-bottom: 2.5rem;
+}
+
+.add-cart-btn {
+    width: 100%;
+    padding: 1rem;
+}
+
+.add-cart-btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+    background-color: hsl(var(--text-secondary));
+}
+
+.product-meta {
+    padding-top: 1.5rem;
+    border-top: 1px solid var(--border-light);
+    font-size: var(--text-sm);
+    color: hsl(var(--text-secondary));
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+/* Related */
+.related-section {
+    padding-top: 3rem;
+    border-top: 1px solid var(--border-light);
+}
+
+@media (min-width: 768px) {
+  .product-detail-layout {
+    grid-template-columns: 1.2fr 1fr; /* Image larger */
+    gap: 4rem;
+  }
+
+  .product-details {
+    padding-top: 1rem;
+    position: sticky;
+    top: 90px;
+    height: fit-content;
+  }
+}

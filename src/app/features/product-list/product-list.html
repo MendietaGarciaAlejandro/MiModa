@@ -1,0 +1,51 @@
+<div class="container section">
+    <div class="catalog-layout">
+        <!-- Sidebar Filters -->
+        <aside class="filters-sidebar">
+            <h3 class="filters-title">Categorías</h3>
+            <ul class="category-list">
+                @for (category of categories; track category) {
+                <li>
+                    <button class="category-btn" [class.active]="selectedCategory === category"
+                        (click)="setCategory(category)">
+                        {{ category }}
+                    </button>
+                </li>
+                }
+            </ul>
+        </aside>
+
+        <!-- Product Grid -->
+        <main class="catalog-main">
+            <div class="catalog-header">
+                <h1 class="catalog-title">{{ selectedCategory }}</h1>
+                <span class="product-count">{{ filteredProducts.length }} productos</span>
+            </div>
+
+            <div class="product-grid">
+                @for (product of filteredProducts; track product.id) {
+                <div class="product-card">
+                    <div class="product-image-container">
+                        <img [src]="product.image" [alt]="product.name" class="product-image" loading="lazy">
+                        @if (product.isNew) {
+                        <span class="product-badge">Nuevo</span>
+                        }
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-name">
+                            <a [routerLink]="['/products', product.id]">{{ product.name }}</a>
+                        </h3>
+                        <p class="product-price">{{ product.price | currency:'EUR':'symbol' }}</p>
+                    </div>
+                </div>
+                }
+            </div>
+
+            @if (filteredProducts.length === 0) {
+            <div class="no-results">
+                <p>No se encontraron productos en esta categoría.</p>
+            </div>
+            }
+        </main>
+    </div>
+</div>

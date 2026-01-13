@@ -1,0 +1,46 @@
+<section class="hero-section">
+    <div class="hero-content container">
+        <h1 class="hero-title">Estilo que trasciende<br>temporadas.</h1>
+        <p class="hero-subtitle">Descubre nuestra nueva colección minimalista diseñada con materiales premium.</p>
+        <a routerLink="/shop" class="btn btn-primary hero-btn">Explorar Colección</a>
+    </div>
+</section>
+
+<section class="section container">
+    <div class="section-header">
+        <h2 class="section-title">Destacados</h2>
+        <a routerLink="/shop" class="section-link">Ver todo &rarr;</a>
+    </div>
+
+    <div class="product-grid">
+        @if (featuredProducts$ | async; as products) {
+        @for (product of products; track product.id) {
+        <div class="product-card">
+            <div class="product-image-container">
+                <img [src]="product.image" [alt]="product.name" class="product-image" loading="lazy">
+                @if (product.isNew) {
+                <span class="product-badge">Nuevo</span>
+                }
+            </div>
+            <div class="product-info">
+                <h3 class="product-name">
+                    <a [routerLink]="['/products', product.id]">{{ product.name }}</a>
+                </h3>
+                <p class="product-price">{{ product.price | currency:'EUR':'symbol' }}</p>
+            </div>
+        </div>
+        }
+        }
+    </div>
+</section>
+
+<section class="section newsletter-section">
+    <div class="container newsletter-container">
+        <h2 class="newsletter-title">Únete a nuestra lista</h2>
+        <p class="newsletter-desc">Recibe ofertas exclusivas y notificaciones sobre nuevos lanzamientos.</p>
+        <form class="newsletter-form" (submit)="$event.preventDefault()">
+            <input type="email" placeholder="Tu correo electrónico" class="newsletter-input">
+            <button type="submit" class="btn btn-primary">Suscribirse</button>
+        </form>
+    </div>
+</section>

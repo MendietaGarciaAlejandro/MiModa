@@ -1,6 +1,6 @@
 # E-commerce Angular
 
-Esta aplicación es una tienda online moderna y responsiva construida con **Angular v18+**. Está diseñada para ser desplegada fácilmente en **GitHub Pages** y utiliza un diseño "premium" con CSS nativo.
+Esta aplicación es una tienda online moderna y responsiva construida con **Angular v18+**. Está diseñada para ser desplegada fácilmente en **Vercel** y utiliza un diseño "premium" con CSS nativo.
 
 ## Características
 

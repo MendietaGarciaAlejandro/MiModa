@@ -1,59 +1,68 @@
-# EcommerceShop
+# E-commerce Angular
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 21.0.5.
+Esta aplicación es una tienda online moderna y responsiva construida con **Angular v18+**. Está diseñada para ser desplegada fácilmente en **GitHub Pages** y utiliza un diseño "premium" con CSS nativo.
 
-## Development server
+## Características
 
-To start a local development server, run:
+*   **Diseño Moderno**: Interfaz minimalista y elegante enfocada en la experiencia de usuario.
+*   **Gestión de Productos**: Catálogo filtrable por categorías y vista de detalle de producto.
+*   **Responsive**: Totalmente adaptable a dispositivos móviles y de escritorio.
+*   **Arquitectura Angular**: Uso de Standalone Components y las últimas prácticas del framework.
+*   **Listo para Despliegue**: Configuración pre-establecida para hosting estático en GitHub Pages.
 
-```bash
-ng serve
-```
+## Comenzando
 
-Once the server is running, open your browser and navigate to `http://localhost:4200/`. The application will automatically reload whenever you modify any of the source files.
+Sigue estas instrucciones para obtener una copia del proyecto y ejecutarlo en tu máquina local.
 
-## Code scaffolding
+### Prerrequisitos
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+Necesitas tener instalado **Node.js** (versión LTS recomendada) y **npm**.
 
-```bash
-ng generate component component-name
-```
+### Instalación
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+1.  Clona el repositorio:
+    ```bash
+    git clone https://github.com/tu-usuario/ecommerce-shop.git
+    cd ecommerce-shop
+    ```
 
-```bash
-ng generate --help
-```
+2.  Instala las dependencias:
+    ```bash
+    npm install
+    ```
 
-## Building
+### Desarrollo Local
 
-To build the project run:
-
-```bash
-ng build
-```
-
-This will compile your project and store the build artifacts in the `dist/` directory. By default, the production build optimizes your application for performance and speed.
-
-## Running unit tests
-
-To execute unit tests with the [Vitest](https://vitest.dev/) test runner, use the following command:
+Para iniciar el servidor de desarrollo:
 
 ```bash
-ng test
+npm start
 ```
 
-## Running end-to-end tests
+Navega a `http://localhost:4200/`. La aplicación se recargará automáticamente si cambias algún archivo fuente.
 
-For end-to-end (e2e) testing, run:
+## Despliegue (GitHub Pages)
 
-```bash
-ng e2e
-```
+Este proyecto incluye un script configurado para desplegar en GitHub Pages.
 
-Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
+1.  Asegúrate de que tu repositorio en GitHub está creado.
+2.  Si el nombre de tu repositorio **no** es `ecommerce-shop`, edita el archivo `package.json` y actualiza el script `build:gh-pages`:
+    ```json
+    "build:gh-pages": "ng build --base-href /NOMBRE-DE-TU-REPO/ --output-path docs"
+    ```
+3.  Ejecuta el comando de build:
+    ```bash
+    npm run build:gh-pages
+    ```
+4.  Sube los cambios a GitHub (asegúrate de incluir la carpeta `docs`).
+5.  En la configuración de tu repositorio en GitHub, ve a la sección **Pages** y selecciona la rama `main` y la carpeta `/docs` como fuente.
 
-## Additional Resources
+## Estructura del Proyecto
 
-For more information on using the Angular CLI, including detailed command references, visit the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+*   `src/app/core`: Componentes estructurales (Header, Footer, Layout) y servicios singleton.
+*   `src/app/features`: Componentes funcionales (Home, Listado de productos, Detalle).
+*   `src/styles.css`: Definiciones de estilos globales y variables CSS.
+
+## Licencia
+
+Este proyecto está licenciado bajo la Licencia MIT - ver el archivo [LICENSE](LICENSE) para más detalles.

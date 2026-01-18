@@ -1,0 +1,44 @@
+<div class="search-overlay-backdrop" (click)="closeOverlay()">
+    <div class="search-container" (click)="$event.stopPropagation()">
+        <div class="search-header">
+            <div class="input-wrapper">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                    class="search-icon">
+                    <circle cx="11" cy="11" r="8" />
+                    <path d="m21 21-4.3-4.3" />
+                </svg>
+                <input #searchInput type="text" [(ngModel)]="searchTerm" (ngModelChange)="onSearchInput($event)"
+                    placeholder="Buscar productos..." class="search-input">
+            </div>
+            <button class="close-btn" (click)="closeOverlay()">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="18" y1="6" x2="6" y2="18"></line>
+                    <line x1="6" y1="6" x2="18" y2="18"></line>
+                </svg>
+            </button>
+        </div>
+
+        <div class="search-results">
+            @if (results.length > 0) {
+            <h3 class="results-title">Resultados</h3>
+            <div class="results-list">
+                @for (product of results; track product.id) {
+                <a [routerLink]="['/products', product.id]" (click)="closeOverlay()" class="result-item">
+                    <img [src]="product.image" [alt]="product.name" class="result-image">
+                    <div class="result-info">
+                        <span class="result-name">{{ product.name }}</span>
+                        <span class="result-price">{{ product.price | currency:'EUR':'symbol' }}</span>
+                    </div>
+                </a>
+                }
+            </div>
+            } @else if (searchTerm.trim() !== '') {
+            <div class="no-results">
+                <p>No encontramos resultados para "{{ searchTerm }}"</p>
+            </div>
+            }
+        </div>
+    </div>
+</div>

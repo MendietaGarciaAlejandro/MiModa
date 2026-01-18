@@ -1,0 +1,57 @@
+<div class="cart-backdrop" (click)="closeDrawer()">
+    <div class="cart-panel" (click)="$event.stopPropagation()">
+        <div class="cart-header">
+            <h2 class="cart-title">Tu Cesta ({{ cartService.cartCount() }})</h2>
+            <button class="close-btn" (click)="closeDrawer()">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="18" y1="6" x2="6" y2="18"></line>
+                    <line x1="6" y1="6" x2="18" y2="18"></line>
+                </svg>
+            </button>
+        </div>
+
+        <div class="cart-items">
+            @if (cartService.cartItems().length > 0) {
+            @for (item of cartService.cartItems(); track item.product.id + item.size) {
+            <div class="cart-item">
+                <img [src]="item.product.image" [alt]="item.product.name" class="item-image">
+                <div class="item-details">
+                    <div class="item-header">
+                        <h3 class="item-name">{{ item.product.name }}</h3>
+                        <span class="item-price">{{ item.product.price | currency:'EUR':'symbol' }}</span>
+                    </div>
+                    <p class="item-size">Talla: {{ item.size }}</p>
+
+                    <div class="item-actions">
+                        <div class="quantity-controls">
+                            <button class="qty-btn"
+                                (click)="updateQuantity(item.product.id, item.size, -1, item.quantity)">-</button>
+                            <span class="qty-value">{{ item.quantity }}</span>
+                            <button class="qty-btn"
+                                (click)="updateQuantity(item.product.id, item.size, 1, item.quantity)">+</button>
+                        </div>
+                        <button class="remove-btn" (click)="removeItem(item.product.id, item.size)">Eliminar</button>
+                    </div>
+                </div>
+            </div>
+            }
+            } @else {
+            <div class="empty-cart">
+                <p>Tu cesta está vacía</p>
+                <a routerLink="/shop" (click)="closeDrawer()" class="start-shopping">Empezar a comprar</a>
+            </div>
+            }
+        </div>
+
+        @if (cartService.cartItems().length > 0) {
+        <div class="cart-footer">
+            <div class="cart-total">
+                <span>Total</span>
+                <span class="total-amount">{{ cartService.cartTotal() | currency:'EUR':'symbol' }}</span>
+            </div>
+            <button class="btn btn-primary checkout-btn">Tramitar pedido</button>
+        </div>
+        }
+    </div>
+</div>

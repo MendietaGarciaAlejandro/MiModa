@@ -1,4 +1,4 @@
-# E-commerce Angular
+# MiModa (E-commerce Angular)
 
 Esta aplicación es una tienda online moderna y responsiva construida con **Angular v18+**. Está diseñada para ser desplegada fácilmente en **Vercel** y utiliza un diseño "premium" con CSS nativo.
 
